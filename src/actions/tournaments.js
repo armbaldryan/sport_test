@@ -1,3 +1,6 @@
+/**
+ * Actions for dispatching tournaments to state
+ */
 import { SAVED_TOURNAMENTS } from "../reducers/constants";
 
 export const onAddTournament = (dispatch, tournament) => {

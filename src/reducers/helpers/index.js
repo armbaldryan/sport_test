@@ -6,6 +6,10 @@ import {
     failPrefix
 } from '../constants';
 
+/**
+ * As we need to cache data, so we check if localStorage
+ * has tournaments saved, then show it as initial state
+ */
 const initialState = window.localStorage.getItem('tournaments')
     ? {
         status: 2,

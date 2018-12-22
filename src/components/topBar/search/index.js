@@ -46,6 +46,9 @@ class SearchField extends PureComponent{
     };
 
     static getDerivedStateFromProps(nextProps, prevState) {
+        /**
+         * We check if nextProps.data came, and it has changes than get 10 relevant results
+         */
         if (!lodashIsEqual(nextProps.data, prevState.suggestions)) {
             return {
                 suggestions: nextProps.data.slice(0, 10)
@@ -54,6 +57,7 @@ class SearchField extends PureComponent{
             return null;
         }
     }
+
     renderInputComponent = inputProps => (
         <TextField
             fullWidth
@@ -97,6 +101,9 @@ class SearchField extends PureComponent{
         event,
         { newValue },
     ) => {
+        /**
+         * We neet to send value to parent component, to fetch new data depended on this value
+         */
         this.props.onChange(newValue);
         this.setState({
             [ name ]: newValue,

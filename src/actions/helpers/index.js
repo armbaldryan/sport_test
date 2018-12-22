@@ -1,3 +1,7 @@
+/**
+ * Action creater for tournaments data, which gets suffix to
+ * know where to dispatch data, and apiCall search argument, which we put in call.
+ */
 import {
     fetchDataSuccess,
     fetchDataFailure,

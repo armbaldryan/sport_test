@@ -34,6 +34,11 @@ class SavedTournaments extends PureComponent{
         if (nextProps.savedTournaments && nextProps.savedTournaments.payload &&
             !lodashIsEqual(this.props.savedTournaments, nextProps.savedTournaments
         )) {
+            /**
+             * Here we check if nextProps saved tournaments payload is
+             * not undefined and it is not equal to previous payload then
+             * regenerate tournaments, and set them to localStorage
+             */
             this.tournaments = this.generateTournaments(nextProps.savedTournaments.payload);
             window.localStorage.setItem('tournaments', JSON.stringify(nextProps.savedTournaments.payload));
         }

@@ -1,3 +1,6 @@
+/**
+ * This functions return actions for fetching data
+ */
 export const fetchDataInProgress = (suffix) => ({
     type: `REQUEST_${suffix}`
 });
