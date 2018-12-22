@@ -1,0 +1,53 @@
+body {
+  margin: 0;
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
+}
+html {
+  height: 100%;
+}
+#app {
+  min-height: calc(100vh - 80px);
+}
+.main-content {
+  height: 100%;
+  width: 100%;
+  max-width: 1200px;
+  margin: 20px auto;
+}
+.top-bar-navigation {
+  header {
+    background-color: #000;
+  }
+}
+.grow {
+  flex-grow: 1 !important;
+}
+.noGrow {
+  flex-grow: 0 !important;
+}
+.aEnd {
+  align-items: flex-end !important;
+}
+.aStart {
+  align-items: flex-start !important;
+}
+.jEnd {
+  justify-content: flex-end !important;
+}
+.jCenter {
+  justify-content: center !important;
+}
+.jStart {
+  justify-content: flex-start !important;
+}
+.tCenter {
+  text-align: center;
+}
+.flex {
+  display: flex !important;
+}
+.horizontal {
+  width: 100% !important;
+  flex-direction: row;
+}

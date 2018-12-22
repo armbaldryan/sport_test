@@ -1,0 +1,27 @@
+.saved-tournaments {
+  margin-top: 50px;
+  border: 1px solid lightGrey;
+  border-radius: 5px;
+  padding: 15px;
+  min-height: 30px;
+    .saved-tournament-list-item {
+      border: 1px solid lightgray;
+      border-radius: 3px;
+      margin-top: 20px;
+      .tournament-avatar {
+        margin: 15px;
+      }
+      .tournament-texts {
+        margin: 10px 0;
+      }
+      .closeIcon {
+        color: lightgray;
+        margin-right: 5px;
+        margin-top: 5px;
+        &:hover {
+          cursor: pointer;
+          color: darkgray;
+        }
+      }
+    }
+}
