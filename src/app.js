@@ -9,11 +9,9 @@ class App extends PureComponent{
         return (
             <div className="main-content">
                 <TopBar/>
-                <main>
-                    <SavedTournaments/>
-                </main>
+                <SavedTournaments/>
             </div>
-    );
+        );
     }
 }
 
