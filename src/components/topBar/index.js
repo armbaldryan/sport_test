@@ -1,10 +1,11 @@
 import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
 import SearchField from './search';
-import { connect } from "react-redux";
 import { fetchTournamentsBySearch } from '../../reducers/tournaments';
-import "./styles.scss";
 
-const mapStateToProps = (state) => ({
+import './styles.scss';
+
+const mapStateToProps = state => ({
     tournaments: state.tournaments,
 });
 
@@ -19,10 +20,10 @@ class TopBar extends PureComponent{
 
     onChange = (value) => {
         if (value.length > 1) {
-            this.props.fetchTournamentsBySearch(value).then((res) => res.length
+            this.props.fetchTournamentsBySearch(value).then(res => res.length
                 ? res[0].documents
                 : res
-            ).then((data) => this.setState({
+            ).then(data => this.setState({
                 data,
             }));
         } else {

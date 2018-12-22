@@ -18,7 +18,7 @@ const store = createStore(
 ReactDOM.render(
 <Provider store={store}>
     <BrowserRouter>
-        <App title = "Sport task"/>
+        <App />
     </BrowserRouter>
     </Provider>,
 document.getElementById('app'));

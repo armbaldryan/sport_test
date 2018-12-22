@@ -1,22 +1,15 @@
-// @flow
-
 import React, { PureComponent } from 'react';
-import PropTypes from "prop-types";
 import lodashIsEqual from 'lodash/isEqual';
+
 import Autosuggest from 'react-autosuggest';
 import Paper from '@material-ui/core/Paper';
 import { onAddTournament } from '../../../actions/tournaments';
-
 import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles';
 import RenderSuggestionItem from './render-suggestion-item';
-import connect from "react-redux/es/connect/connect";
+import { connect } from 'react-redux';
 
 const styles = theme => ({
-    root: {
-        flexGrow: 1,
-        display: 'flex',
-    },
     container: {
         position: 'relative',
     },
@@ -40,13 +33,10 @@ const styles = theme => ({
     },
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
     onAddTournament: (tournament) => onAddTournament(dispatch, tournament),
 });
 class SearchField extends PureComponent{
-    static contextTypes = {
-        router: PropTypes.object,
-    };
 
     state = {
         single: '',
@@ -64,19 +54,16 @@ class SearchField extends PureComponent{
             return null;
         }
     }
-    renderInputComponent = (inputProps) => {
+    renderInputComponent = inputProps => (
+        <TextField
+            fullWidth
+            variant="outlined"
+            label="Search field"
+            {...inputProps}
+        />
+    );
 
-        return (
-            <TextField
-                fullWidth
-                variant="outlined"
-                label="Search field"
-                {...inputProps}
-            />
-        );
-    };
-
-    getSuggestions = (value) => {
+    getSuggestions = value => {
         const inputValue = value.toLowerCase();
         const inputLength = inputValue.length;
         return inputLength === 0
@@ -86,11 +73,10 @@ class SearchField extends PureComponent{
 
     getSuggestionValue = () => '';
 
-    getSectionSuggestions = (section) => {
+    getSectionSuggestions = section => {
         return section.children.map(
             (item) => ({
                 ...item,
-                parentName: section.name,
             }),
         );
     };
@@ -120,18 +106,16 @@ class SearchField extends PureComponent{
     renderSuggestion = (
         suggestion,
         { query, isHighlighted }
-    ) => {
-        return (
-            <RenderSuggestionItem
-                suggestion={suggestion}
-                query={query}
-                onClick={this.clickHandler}
-                isHighlighted={isHighlighted}
-            />
-        );
-    };
+    ) => (
+        <RenderSuggestionItem
+            suggestion={suggestion}
+            query={query}
+            onClick={this.clickHandler}
+            isHighlighted={isHighlighted}
+        />
+    );
 
-    clickHandler = (tournament) => {
+    clickHandler = tournament => {
         this.props.onAddTournament(tournament);
     };
 
@@ -149,7 +133,7 @@ class SearchField extends PureComponent{
         };
 
         return (
-            <div className="root">
+            <div>
                 <Autosuggest
                     focusInputOnSuggestionClick={false}
                     {...autosuggestProps}
@@ -163,7 +147,7 @@ class SearchField extends PureComponent{
                         suggestionsList: classes.suggestionsList,
                         suggestion: classes.suggestion,
                     }}
-                    renderSuggestionsContainer={(options) => (
+                    renderSuggestionsContainer={options => (
                         <Paper
                             {...options.containerProps}
                             square

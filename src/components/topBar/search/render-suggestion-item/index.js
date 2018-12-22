@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { withStyles } from '@material-ui/core/styles';
-import PropTypes from 'prop-types';
 import MenuItem from '@material-ui/core/MenuItem/MenuItem';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
@@ -22,24 +21,20 @@ const styles = {
 };
 
 class RenderSuggestionItem extends React.PureComponent {
-    static contextTypes = {
-        router: PropTypes.object,
-    };
+
+    clickHandler = () => this.props.onClick(this.props.suggestion);
 
     render() {
         const {
             suggestion,
-            query,
-            isHighlighted,
             classes,
         } = this.props;
 
         return (
             <MenuItem
-                selected={isHighlighted}
                 className={classes.menuItem}
                 component="div"
-                onClick={() => this.props.onClick(suggestion)}
+                onClick={this.clickHandler}
             >
                 <div className={classes.menuItemContent}>
                     <div className={classes.avatar}>
