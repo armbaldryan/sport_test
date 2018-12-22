@@ -6,19 +6,17 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button';
+import {onDeleteTournament} from "../../actions/tournaments";
 
 import "./styles.scss";
-import {onDeleteTournament} from "../../../actions/tournaments";
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
     savedTournaments: state.savedTournaments,
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
     onDeleteTournament: (tournament) => onDeleteTournament(dispatch, tournament),
 });
 class SavedTournaments extends PureComponent{
@@ -36,12 +34,12 @@ class SavedTournaments extends PureComponent{
         if (nextProps.savedTournaments && nextProps.savedTournaments.payload &&
             !lodashIsEqual(this.props.savedTournaments, nextProps.savedTournaments
         )) {
-            this.tournaments = this.generateTournaments(nextProps.savedTournaments.payload)
+            this.tournaments = this.generateTournaments(nextProps.savedTournaments.payload);
             window.localStorage.setItem('tournaments', JSON.stringify(nextProps.savedTournaments.payload));
         }
     };
 
-    generateTournaments = (tournaments) => tournaments.map((tournament) => (
+    generateTournaments = tournaments => tournaments.map(tournament => (
         <SavedTournamentsListItem
             key={tournament.id}
             tournament={tournament}
@@ -49,7 +47,7 @@ class SavedTournaments extends PureComponent{
         />
     ));
 
-    deleteHandler = (tournament) => this.handleDialogToggle(tournament);
+    deleteHandler = tournament => this.handleDialogToggle(tournament);
 
     confirmHandler = () => {
         this.props.onDeleteTournament(this.state.selectedTournament);
@@ -58,11 +56,10 @@ class SavedTournaments extends PureComponent{
         });
     };
 
-    handleDialogToggle = (tournament) => this.setState((prevState => ({
+    handleDialogToggle = tournament => this.setState(prevState => ({
         isDialogOpen: !prevState.isDialogOpen,
         selectedTournament: tournament
-    })
-    ));
+    }));
 
     render() {
         return (
@@ -88,12 +85,22 @@ class SavedTournaments extends PureComponent{
                     aria-labelledby="alert-dialog-title"
                     aria-describedby="alert-dialog-description"
                 >
-                    <DialogTitle id="alert-dialog-title" children="Do you want to remove selected tournament?"/>
+                    <DialogTitle
+                        id="alert-dialog-title"
+                        children="Do you want to remove selected tournament?"
+                    />
                     <DialogActions>
-                        <Button onClick={this.handleDialogToggle} color="primary">
+                        <Button
+                            onClick={this.handleDialogToggle}
+                            color="primary"
+                        >
                             Cancel
                         </Button>
-                        <Button onClick={this.confirmHandler} color="primary" autoFocus>
+                        <Button
+                            onClick={this.confirmHandler}
+                            color="primary"
+                            autoFocus
+                        >
                             Confirm
                         </Button>
                     </DialogActions>

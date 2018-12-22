@@ -163,4 +163,3 @@ class SearchField extends PureComponent{
 }
 
 export default connect(null, mapDispatchToProps)(withStyles(styles)(SearchField));
-

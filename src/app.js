@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import TopBar from './components/topBar';
-import SavedTournaments from './components/content/savedTournaments';
+import SavedTournaments from './components/savedTournaments';
 
 import "./styles.scss";
 

@@ -8,14 +8,16 @@ import "./styles.scss";
 
 class SavedTournamentsListItem extends PureComponent{
 
-    deleteHandler = () => {
-        this.props.deleteHandler(this.props.tournament);
-    };
+    deleteHandler = () => this.props.deleteHandler(this.props.tournament);
 
     render() {
         const { tournament } = this.props;
         return (
-            <Grid item xs={12} md={4}>
+            <Grid
+                item
+                xs={12}
+                md={4}
+            >
                 <div className="saved-tournament-list-item flex horizontal">
                     <div className="flex horizontal">
                         <div className="tournament-avatar">
