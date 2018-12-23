@@ -24,6 +24,7 @@ class SavedTournaments extends PureComponent{
         super(props);
         this.state={
             isDialogOpen: false,
+            selectedTournament: null,
         };
         this.tournaments = props.savedTournaments.status === 2
             ? this.generateTournaments(props.savedTournaments.payload)
